@@ -1,0 +1,16 @@
+{
+  "name": "crawler",
+  "version": "0.0.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "auto-suggest": "latest",
+    "fancybox": "~2.1.5",
+    "fontawesome": "~4.1.0",
+    "bootstrap": "~3.2.0",
+    "jquery.easy-pie-chart": "~2.1.4"
+  }
+}

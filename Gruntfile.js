@@ -1,0 +1,141 @@
+// Please refer to the README file before trying to edit this file.
+module.exports = function(grunt) {
+    // Project configuration.
+    grunt.initConfig({
+        // directory config
+        folders: {
+            res: 'resources',
+            target: 'public',
+            components: 'bower_components/'
+        },
+
+        concat: {
+           /* jquery: {
+                src: ['<%=folders.components%>/jquery/jquery.js'],
+                dest: '<%=folders.dest%>/js/jquery.js'
+            },*/
+            app: {
+                src: [
+                    '<%=folders.components%>/auto-suggest/jquery.autoSuggest.js',
+                    '<%=folders.components%>/bootstrap/js/bootstrap-affix.js',
+                    '<%=folders.components%>/bootstrap/js/bootstrap-alert.js',
+                    '<%=folders.components%>/bootstrap/js/bootstrap-button.js',
+                    '<%=folders.components%>/bootstrap/js/bootstrap-carousel.js',
+                    '<%=folders.components%>/bootstrap/js/bootstrap-collapse.js',
+                    '<%=folders.components%>/bootstrap/js/bootstrap-dropdown.js',
+                    '<%=folders.components%>/bootstrap/js/bootstrap-modal.js',
+                    //'<%=folders.components%>/bootstrap/js/bootstrap-popover.js',
+                    '<%=folders.components%>/bootstrap/js/bootstrap-scrollspy.js',
+                    '<%=folders.components%>/bootstrap/js/bootstrap-tab.js',
+                    '<%=folders.components%>/bootstrap/js/bootstrap-tooltip.js',
+                    '<%=folders.components%>/bootstrap/js/bootstrap-transition.js',
+                    '<%=folders.components%>/bootstrap/js/bootstrap-typeahead.js',
+                    '<%=folders.components%>/fancybox/source/jquery.fancybox.js',
+                    '<%=folders.components%>/jquery.easy-pie-chart/dist/jquery.easypiechart.js',
+                    '<%=folders.res%>/js/sources/*.js'
+                ],
+                dest: '<%=folders.target%>/js/app.js'
+            }
+
+        },
+
+        // Minify
+        uglify: {
+            jquery: {
+                files:
+                {
+                    '<%=folders.res%>/js/jquery.js': ['<%=folders.target%>/js/jquery.js']
+                }
+            }
+        },
+
+        // Define here all GZip files config
+        compress: {
+            gzip: {
+                options: {
+                  mode: "gzip"
+                },
+                files: {
+                    "<%=folders.target%>/css/screen.css.gz": "<%=folders.target%>/css/screen.css",
+                    "<%=folders.target%>/css/print.css.gz": "<%=folders.target%>/css/print.css",
+                    "<%=folders.target%>/js/jquery.js.gz": "<%=folders.target%>/js/jquery.js",
+                    "<%=folders.target%>/js/app.js.gz": "<%=folders.target%>/js/app.js"
+                }
+            }
+        },
+        copy: {
+            images: {
+                files: [
+                    {
+                        src: '**',
+                        dest: '<%= folders.target %>/images/',
+                        expand: true,
+                        cwd: '<%= folders.res %>/images/'
+                    }
+                ]
+            },
+            fonts: {
+                files: [
+                    {
+                        src: ['*.eot', '*.ttf', '*.woff', '*.otf', '*.svg', '.htaccess'],
+                        dest: '<%= folders.target %>/fonts/',
+                        expand: true,
+                        cwd: '<%= folders.res %>/fonts/'
+                    }
+                ]
+            }
+
+        },
+        less: {
+            application: {
+                options: {
+                    paths: [
+                        "<%= folders.components %>",
+                        "resources/less"
+                    ],
+                    yuicompress: false
+                },
+                files: {
+                    "public/css/screen.css": "resources/less/css-screen.less"
+                }
+            }
+        },
+        // watch for SASS/JS files modifications & rebuild
+        watch: {
+            less: {
+                files: 'resources/less/**',
+                tasks: ['css']
+            },
+            js: {
+                files: ['<%=folders.dest%>/js/sources/*.js'],
+                tasks: ['uglify']
+            },
+            images: {
+                files: '<%= folders.res %>/images/**',
+                tasks: ['copy:images']
+            },
+            fonts: {
+                files: '<%= folders.res %>/fonts/**',
+                tasks: ['copy:fonts']
+            }
+        }
+
+    });
+
+    // Loading extra tasks
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+
+    // Default call = building all JS / CSS
+    grunt.registerTask('default', 'build');
+    grunt.registerTask('css', 'less');
+    grunt.registerTask('js', 'concat');
+
+    // Complete build
+    grunt.registerTask('build', ['js', 'css', 'copy', 'watch']);
+    grunt.registerTask('deploy', ['js', 'uglify', 'css', 'img', 'compress']);
+};
