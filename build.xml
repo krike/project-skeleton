@@ -1,0 +1,22 @@
+<project name="project_skeleton" default="build">
+    <property name="package" value="project_skeleton" override="true" />
+    <target name="clean">
+        <delete dir="bower_components"/>
+    </target>
+    <target name="install">
+        <phingcall target="clean" />
+        <exec command="npm install"
+              dir="." passthru="true" />
+        <exec command="bower install"
+              dir="." passthru="true" />
+        <exec command="grunt"
+              dir="." passthru="true" />
+        <exec command="composer install"
+              dir="." passthru="true" />
+    </target>
+    <target name="deploy" depends="install">
+        <exec command="grunt deploy"
+              dir="." passthru="true" />
+    </target>
+    <target name="build" depends="install"/>
+</project>

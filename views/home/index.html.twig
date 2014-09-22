@@ -1,57 +1,8 @@
 {% extends "layout/base.html.twig" %}
-{% import "_macros/time.html.twig" as tables %}
 {% block content %}
-        
-    {% for list in project_list.lists %}
-        {% set active = list.title == 'WPdeposit' ? 1 : 0 %}
-        {# INSERT INTO projects (created_by, name, active) VALUES (1, '{{ list.title }}', {{ active }});<br /> #}
-    {% endfor %}
-    
     <div class="row">
-        <div class="col-sm-7">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title"><span class="label label-danger">!</span> Urgent</h3>
-                </div>
-                <div class="panel-body">
-                    {{ tables.smallTable(urgent_list, status_list) }}
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title"><i class="fa fa-list"></i> Current Project</h3>
-                </div>
-                <div class="panel-body">
-                    {% if active_project is not empty %}
-                        {{ tables.activeProject(active_project, open_issues, status_list) }}
-                    {% else %}
-                        <div class="alert alert-info">There are is no active project</div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-5">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h3 class="panel-title"><i class="fa fa-list"></i> All Project</h3>
-                </div>
-                <div class="panel-body">
-                    {% if projects is not empty %}
-                        <table class="table table-striped">
-                            <tr>
-                                <th>Name</th>
-                            </tr>
-                            {% for project in projects %}
-                            <tr>
-                                <td><a href="/project/{{ project.ID }}">{{ project.name }}</a></td>
-                            </tr>
-                            {% endfor %}
-                        </table>
-                    {% else %}
-                        <p>No projects found</p>
-                    {% endif %}
-                </div>
-            </div>
+        <div class="col-sm-12">
+            Place content here
         </div>
     </div>
 {% endblock %}
