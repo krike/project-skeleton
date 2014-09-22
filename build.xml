@@ -9,9 +9,9 @@
               dir="." passthru="true" />
         <exec command="bower install"
               dir="." passthru="true" />
-        <exec command="grunt"
-              dir="." passthru="true" />
         <exec command="composer install"
+              dir="." passthru="true" />
+        <exec command="grunt"
               dir="." passthru="true" />
     </target>
     <target name="deploy" depends="install">
