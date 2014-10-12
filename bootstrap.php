@@ -6,7 +6,6 @@ define('BASE_DIR', dirname(__FILE__));
 define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST'] . str_replace('/index.php', '', $_SERVER['PHP_SELF']));
 
 include_once 'vendor/autoload.php';
-include_once 'custom_autoload.php';
 
 if(ENVIRONMENT != 'production') {
    /**
@@ -29,12 +28,14 @@ $klein = new \Klein\Klein();
  */
 $klein->respond('/', function(){
     //forward to home/index
-    $controller = new home();
+    $controller = new Krikke\Skeleton\Controller\Home();
     $controller->index();
 });
 
 /**
  * Fetch custom controller & method
+ *
+ * http://symfony.com/doc/current/components/routing/introduction.html (dynamische controller)
  */
 $klein->respond('/[:controller]/[:method]?/[:action]?/[:value]?', function ($request) {
     if (class_exists(ucfirst($request->controller))) {

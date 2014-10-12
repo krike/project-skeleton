@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "594717cfa72e2f0f114ef3e81eac94fa",
+    "hash": "c458fc2cb710aea6a73a5d7f30cbf38b",
     "packages": [
         {
             "name": "klein/klein",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriso/klein.php.git",
-                "reference": "0565aae11246e8502dc345d3bbab0fcca333a2b1"
+                "reference": "63908b0dbae4c0047ee404ceaf17667bffa6bbfb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriso/klein.php/zipball/0565aae11246e8502dc345d3bbab0fcca333a2b1",
-                "reference": "0565aae11246e8502dc345d3bbab0fcca333a2b1",
+                "url": "https://api.github.com/repos/chriso/klein.php/zipball/63908b0dbae4c0047ee404ceaf17667bffa6bbfb",
+                "reference": "63908b0dbae4c0047ee404ceaf17667bffa6bbfb",
                 "shasum": ""
             },
             "require": {
@@ -60,7 +60,7 @@
                 "routing",
                 "sinatra"
             ],
-            "time": "2014-06-17 12:17:13"
+            "time": "2014-10-09 16:12:44"
         },
         {
             "name": "sunra/php-simple-html-dom-parser",
@@ -93,7 +93,7 @@
                 {
                     "name": "Sunra",
                     "email": "sunra@yandex.ru",
-                    "homepage": "https://github.com/sunra"
+                    "homepage": "http://github.com/sunra"
                 }
             ],
             "description": "Composer adaptation of: A HTML DOM parser written in PHP5+ let you manipulate HTML in a very easy way! Require PHP 5+. Supports invalid HTML. Find tags on an HTML page with selectors just like jQuery. Extract contents from HTML in a single line.",
@@ -107,16 +107,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.16.0",
+            "version": "v1.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "8ce37115802e257a984a82d38254884085060024"
+                "reference": "7c4c01dcf578523cfcddf383641a4f12790270ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/8ce37115802e257a984a82d38254884085060024",
-                "reference": "8ce37115802e257a984a82d38254884085060024",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/7c4c01dcf578523cfcddf383641a4f12790270ec",
+                "reference": "7c4c01dcf578523cfcddf383641a4f12790270ec",
                 "shasum": ""
             },
             "require": {
@@ -160,23 +160,16 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-07-05 12:19:05"
+            "time": "2014-10-10 14:09:53"
         }
     ],
-    "packages-dev": [
-
-    ],
-    "aliases": [
-
-    ],
+    "packages-dev": [],
+    "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "klein/klein": 20
     },
-    "platform": [
-
-    ],
-    "platform-dev": [
-
-    ]
+    "prefer-stable": false,
+    "platform": [],
+    "platform-dev": []
 }
