@@ -2,7 +2,7 @@
 
 namespace Krikke\Skeleton\Models;
 
-class HomeModel extends Model {
+class HomeModel extends AbstractModel {
     
     public $tableName = 'table';
     
@@ -14,10 +14,16 @@ class HomeModel extends Model {
         if (empty($id) || !is_int($id)) {
             return false;
         }
-        // pdo statement && $this->doQuery
-        /*$this->db->where('id', $id);
-        $result = $this->db->get($this->tableName);
-        return !empty($result[0])? $result[0] : false ;*/
+        $this->getDbConnection();
+        $results = $this->db->from('projects')
+            ->orderBy('created_ts DESC')
+            ->where('id', 2);
+
+        if (count($results) > 0) {
+            return $results;
+        } else {
+            return null;
+        }
     }
     
     public function getIssuesFromActiveProject($id) {

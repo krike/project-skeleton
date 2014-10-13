@@ -4,7 +4,6 @@ namespace Krikke\Skeleton\Models;
 
 abstract class AbstractModel {
 
-    /** private maken */
     public $db = null;
     private $user;
     private $pass;
@@ -14,32 +13,23 @@ abstract class AbstractModel {
             $this->user = 'prod';
             $this->pass = 'prodpass';
         } else {
-            $this->user = 'dev';
-            $this->pass = 'devpass';
+            $this->user = 'root';
+            $this->pass = 'root';
         }
     }
 
-    /*
-     * http://fluentpdo.com/ als query builder
-     */
-    protected function doQuery(PDOStatement $statement)
+
+    protected function getDbConnection()
     {
-        $db = $this->getDbConnection();
-        //....
-    }
-
-
-    private function getDbConnection()
-    {
-        /*if (ENVIRONMENT == 'development') {
-            $this->db  = new MySqlDb('localhost', 'root', 'root', 'db');
-        } elseif ($_SERVER['HTTP_HOST'] == 'localhost') {
-            $this->db  = new MySqlDb('localhost', 'root', '', 'db');
-        }*/
-
         if ($this->db === null) {
-            $this->db = new PDO();
+            if (ENVIRONMENT == 'development') {
+                $pdo = new \PDO("mysql:dbname=project_manager", $this->user, $this->pass);
+            } else if(ENVIRONMENT == 'production') {
+                $pdo = new \PDO("mysql:dbname=project_manager", $this->user, $this->pass);
+            }
+            $this->db = new \FluentPDO($pdo);
         }
+
         return $this->db;
     }
 
