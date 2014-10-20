@@ -1,8 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
-        "This file is @generated automatically"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
     "hash": "c458fc2cb710aea6a73a5d7f30cbf38b",
     "packages": [
@@ -12,12 +11,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriso/klein.php.git",
-                "reference": "63908b0dbae4c0047ee404ceaf17667bffa6bbfb"
+                "reference": "3ca0ba7f2836601469e4153c4ea227081e5a670f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriso/klein.php/zipball/63908b0dbae4c0047ee404ceaf17667bffa6bbfb",
-                "reference": "63908b0dbae4c0047ee404ceaf17667bffa6bbfb",
+                "url": "https://api.github.com/repos/chriso/klein.php/zipball/3ca0ba7f2836601469e4153c4ea227081e5a670f",
+                "reference": "3ca0ba7f2836601469e4153c4ea227081e5a670f",
                 "shasum": ""
             },
             "require": {
@@ -30,8 +29,8 @@
             },
             "type": "library",
             "autoload": {
-                "psr-0": {
-                    "Klein": "src/"
+                "psr-4": {
+                    "Klein\\": "src/Klein/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -60,7 +59,7 @@
                 "routing",
                 "sinatra"
             ],
-            "time": "2014-10-09 16:12:44"
+            "time": "2014-10-15 15:30:58"
         },
         {
             "name": "sunra/php-simple-html-dom-parser",
@@ -169,7 +168,6 @@
     "stability-flags": {
         "klein/klein": 20
     },
-    "prefer-stable": false,
     "platform": [],
     "platform-dev": []
 }

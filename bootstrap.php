@@ -29,7 +29,7 @@ $klein = new \Klein\Klein();
  */
 $klein->respond('/', function(){
     //forward to home/index
-    $controller = new Krikke\Skeleton\Controller\Home();
+    $controller = new Krikke\Skeleton\Controller\Example();
     $controller->index();
 });
 

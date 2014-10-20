@@ -19,7 +19,7 @@ abstract class AbstractModel {
     }
 
 
-    protected function getDbConnection()
+    private function getDbConnection()
     {
         if ($this->db === null) {
             if (ENVIRONMENT == 'development') {
@@ -31,6 +31,40 @@ abstract class AbstractModel {
         }
 
         return $this->db;
+    }
+
+    protected function get($table, $fields = '*', $order = 'id ASC', $limit = null)
+    {
+        $this->getDbConnection();
+        $query = $this->db->from($table)
+                            ->orderBy($order)
+                            ->select($fields);
+        
+        if (is_numeric($limit) && $limit > 0) {
+            $query->limit($limit);
+        }
+        
+        $results = $query->fetchAll();
+
+        if (count($results) > 0) {
+            return $results;
+        } else {
+            return array();
+        }
+    }
+
+    protected function getRecordById($table, $id)
+    {
+        $this->getDbConnection();
+        $results = $this->db->from($table)
+                            ->where('id = ?', $id)
+                            ->fetch();
+
+        if (count($results) > 0) {
+            return $results;
+        } else {
+            return array();
+        }
     }
 
 }
