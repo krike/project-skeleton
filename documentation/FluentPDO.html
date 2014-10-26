@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://fluentpdo.com/documentation.html#features -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>FluentPDO, smart SQL builder for PHP</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FluentPDO, smart SQL builder for PHP.">
+    <meta name="author" content="Marek Lichtner">
+
+    <!-- Le styles -->
+    <link href="http://fluentpdo.com/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+
+    <!--link href="css/bootstrap-responsive.css" rel="stylesheet"-->
+    <link href="http://fluentpdo.com/js/google-code-prettify/prettify.css" rel="stylesheet">
+    <link href="http://fluentpdo.com/css/my.css" rel="stylesheet">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://fluentpdo.com/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://fluentpdo.com/assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://fluentpdo.com/assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://fluentpdo.com/assets/ico/apple-touch-icon-57-precomposed.png">
+    
+    <script type="text/javascript" async="" src="./FluentPDO_files/ga.js"></script><script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-31584980-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>    
+  </head>
+
+  <body data-feedly-mini="yes">
+    
+    
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://fluentpdo.com/index.html">FluentPDO</a>
+          <ul class="nav">
+            <li><a href="http://fluentpdo.com/index.html">Home</a></li>
+            <li class="dropdown active">
+                <a href="http://fluentpdo.com/documentation.html#" class="dropdown-toggle" data-toggle="dropdown">
+                      Documentation
+                      <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="./FluentPDO_files/FluentPDO.html">Features</a></li>
+                  <li><a href="http://fluentpdo.com/documentation.html#gettingStarted">Getting started</a></li>
+                  <li><a href="http://fluentpdo.com/documentation.html#smartJoinBuilder">Smart join builder</a></li>
+                  <li><a href="http://fluentpdo.com/documentation.html#select">SELECT * FROM</a></li>
+                  <li><a href="http://fluentpdo.com/documentation.html#where">WHERE</a></li>
+                </ul>
+            </li>            
+            <li><a href="https://github.com/lichtner/fluentpdo/zipball/master">Download</a></li>
+          </ul>
+          <ul class="nav pull-right">
+            <li class="active"><a href="https://twitter.com/#!/FluentPDO">Follow me</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <header class="" id="overview">
+        <h1>Documentation</h1>
+        <p class="lead">FluentPDO, smart SQL builder for PHP.</p>
+      </header>
+
+      <section id="features">
+        <div class="page-header">
+          <h2>Features</h2>
+        </div>
+
+        <ul>
+          <li>Zero configuration</li>
+          <li>Fluent interface for creating queries step by step</li>
+          <li><em>Smart join builder</em> for quick prototyping queries</li>
+	      <li>Build SELECT, INSERT, UPDATE &amp; DELETE queries</li>
+          <li>Simple API based on PDO and SQL syntax</li>
+          <li>Code completion for smart IDEs</li>
+          <li>requires PHP 5.1+ with any database supported by PDO</li>
+        </ul>
+      </section>
+
+      <section id="gettingStarted">
+        <div class="page-header">
+          <h2>Getting started <small> in 5 minutes</small></h2>
+        </div>
+
+        <h3>Connection</h3>
+
+        
+       <div class="row">
+          <div class="span9">
+        <p>Just copy <code>FluentPDO/</code> subdirectory into your <code>libs/</code> directory then:</p>
+
+        <pre class="prettyprint"><span class="pln">  include </span><span class="str">"libs/FluentPDO/FluentPDO.php"</span><span class="pun">;</span><span class="pln">
+  $pdo </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> PDO</span><span class="pun">(</span><span class="str">"mysql:dbname=fblog"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"root"</span><span class="pun">,</span><span class="pln"> </span><span class="str">"password"</span><span class="pun">);</span><span class="pln">
+  $fpdo </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">FluentPDO</span><span class="pun">(</span><span class="pln">$pdo</span><span class="pun">);</span></pre>
+        <h3>Simple usage with fluent interface</h3>
+        <p>FluentPDO has simple API based on well-known SQL syntax:</p>
+
+
+        <pre class="prettyprint"><span class="pln">  $query </span><span class="pun">=</span><span class="pln"> $fpdo</span><span class="pun">-&gt;</span><span class="kwd">from</span><span class="pun">(</span><span class="str">'article'</span><span class="pun">)</span><span class="pln">
+            </span><span class="pun">-&gt;</span><span class="kwd">where</span><span class="pun">(</span><span class="str">'published_at &gt; ?'</span><span class="pun">,</span><span class="pln"> $date</span><span class="pun">)</span><span class="pln">
+            </span><span class="pun">-&gt;</span><span class="pln">orderBy</span><span class="pun">(</span><span class="str">'published_at DESC'</span><span class="pun">)</span><span class="pln">
+            </span><span class="pun">-&gt;</span><span class="pln">limit</span><span class="pun">(</span><span class="lit">5</span><span class="pun">);</span><span class="pln">
+  </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">$user_id</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    $query </span><span class="pun">=</span><span class="pln"> $query</span><span class="pun">-&gt;</span><span class="kwd">where</span><span class="pun">(</span><span class="str">'user_id'</span><span class="pun">,</span><span class="pln"> $user_id</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+  </span><span class="kwd">foreach</span><span class="pln"> </span><span class="pun">(</span><span class="pln">$query </span><span class="kwd">as</span><span class="pln"> $row</span><span class="pun">)</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    echo </span><span class="str">"$row[title]\n"</span><span class="pun">;</span><span class="pln">
+  </span><span class="pun">}</span></pre>
+          </div>
+          <div class="span3">
+            <h4>Database schema</h4>
+            <img src="./FluentPDO_files/fluentpdo-db.png" alt="Database schema" style="float:right">
+            <p><em>This is database schema used in all examples in this documentation.</em></p>
+          </div>
+       </div>
+      </section>
+
+      <section id="smartJoinBuilder">
+        <div class="page-header">
+          <h2>Smart join builder <small> howto build queries quickly</small></h2>
+        </div>
+        
+        <p>If you want to join table you can use full sql join syntax. For example we would like to show list of articles with author name:</p>
+        <pre class="prettyprint"><span class="pln">  $query </span><span class="pun">=</span><span class="pln"> $fpdo</span><span class="pun">-&gt;</span><span class="kwd">from</span><span class="pun">(</span><span class="str">'article'</span><span class="pun">)-&gt;</span><span class="pln">leftJoin</span><span class="pun">(</span><span class="str">'user ON user.id = article.user_id'</span><span class="pun">)-&gt;</span><span class="kwd">select</span><span class="pun">(</span><span class="str">'user.name'</span><span class="pun">);</span></pre>
+
+        <p>It was not so much smart, was it? ;-) If your database uses convention for primary and foreign key names, you can write only:</p>
+        <pre class="prettyprint"><span class="pln">  $query </span><span class="pun">=</span><span class="pln"> $fpdo</span><span class="pun">-&gt;</span><span class="kwd">from</span><span class="pun">(</span><span class="str">'article'</span><span class="pun">)-&gt;</span><span class="pln">leftJoin</span><span class="pun">(</span><span class="str">'user'</span><span class="pun">)-&gt;</span><span class="kwd">select</span><span class="pun">(</span><span class="str">'user.name'</span><span class="pun">);</span></pre>
+
+        <p>Smarter? May be. but <strong>best practice how to write joins is not to write any joins ;-)</strong></p>
+        <pre class="prettyprint"><span class="pln">  $query </span><span class="pun">=</span><span class="pln"> $fpdo</span><span class="pun">-&gt;</span><span class="kwd">from</span><span class="pun">(</span><span class="str">'article'</span><span class="pun">)-&gt;</span><span class="kwd">select</span><span class="pun">(</span><span class="str">'user.name'</span><span class="pun">);</span></pre>
+
+        <p>All three commands create same query:</p>
+        <pre class="prettyprint"><span class="pln">  SELECT article</span><span class="pun">.*,</span><span class="pln"> user</span><span class="pun">.</span><span class="pln">name 
+  FROM article 
+       LEFT JOIN user ON user</span><span class="pun">.</span><span class="pln">id </span><span class="pun">=</span><span class="pln"> article</span><span class="pun">.</span><span class="pln">user_id</span></pre>
+
+        <p>Really smart, isn't it? ;-)</p>
+        <p>If you use referenced column in <code>select(), where(), groupBy() or orderBy()</code> clauses, you don't need to write any joins manualy.</p>
+
+        <pre class="prettyprint"><span class="pln">  $query </span><span class="pun">=</span><span class="pln"> $fpdo</span><span class="pun">-&gt;</span><span class="kwd">from</span><span class="pun">(</span><span class="str">'comments'</span><span class="pun">)</span><span class="pln">
+                </span><span class="pun">-&gt;</span><span class="kwd">where</span><span class="pun">(</span><span class="str">'user.country_id'</span><span class="pun">,</span><span class="pln"> $country</span><span class="pun">)</span><span class="pln">
+                </span><span class="pun">-&gt;</span><span class="pln">orderBy</span><span class="pun">(</span><span class="str">'user.name'</span><span class="pun">)</span><span class="pln">
+                </span><span class="pun">-&gt;</span><span class="kwd">select</span><span class="pun">(</span><span class="str">'user.name'</span><span class="pun">);</span></pre>
+        <pre class="prettyprint"><span class="pln">  SELECT comment</span><span class="pun">.*,</span><span class="pln"> user</span><span class="pun">.</span><span class="pln">name 
+  FROM comment 
+      LEFT JOIN user ON user</span><span class="pun">.</span><span class="pln">id </span><span class="pun">=</span><span class="pln"> comment</span><span class="pun">.</span><span class="pln">user_id 
+  WHERE user</span><span class="pun">.</span><span class="pln">country_id </span><span class="pun">=</span><span class="pln"> </span><span class="pun">?</span><span class="pln"> 
+  ORDER BY user</span><span class="pun">.</span><span class="pln">name</span></pre>
+
+
+        <h3>Back reference (referencing table)</h3>
+        <p>For join referencing table use colon after table name.</p>
+
+        <pre class="prettyprint"><span class="pln">  $query </span><span class="pun">=</span><span class="pln"> $fpdo</span><span class="pun">-&gt;</span><span class="kwd">from</span><span class="pun">(</span><span class="str">'user'</span><span class="pun">)-&gt;</span><span class="pln">leftJoin</span><span class="pun">(</span><span class="str">'article:'</span><span class="pun">)-&gt;</span><span class="kwd">select</span><span class="pun">(</span><span class="str">'article.title'</span><span class="pun">);</span><span class="pln">
+  </span><span class="com">// or shortly</span><span class="pln">
+  $query </span><span class="pun">=</span><span class="pln"> $fpdo</span><span class="pun">-&gt;</span><span class="kwd">from</span><span class="pun">(</span><span class="str">'user'</span><span class="pun">)-&gt;</span><span class="kwd">select</span><span class="pun">(</span><span class="str">'article:title'</span><span class="pun">);</span></pre>
+        <pre class="prettyprint"><span class="pln">  SELECT user</span><span class="pun">.*,</span><span class="pln"> article</span><span class="pun">.</span><span class="pln">title 
+  FROM user 
+      LEFT JOIN article ON article</span><span class="pun">.</span><span class="pln">user_id </span><span class="pun">=</span><span class="pln"> user</span><span class="pun">.</span><span class="pln">id</span></pre>
+
+
+        <h3>Alias for columns or tables</h3>
+        <p>You can alias your column with <code>AS</code>:</p>
+
+        <pre class="prettyprint"><span class="pln">  $query </span><span class="pun">=</span><span class="pln"> $fpdo</span><span class="pun">-&gt;</span><span class="kwd">from</span><span class="pun">(</span><span class="str">'article'</span><span class="pun">)-&gt;</span><span class="kwd">select</span><span class="pun">(</span><span class="str">'user.name AS author_name'</span><span class="pun">);</span></pre>
+        <pre class="prettyprint"><span class="pln">  SELECT article</span><span class="pun">.*,</span><span class="pln"> user</span><span class="pun">.</span><span class="pln">name AS author_name 
+  FROM article 
+      LEFT JOIN user ON user</span><span class="pun">.</span><span class="pln">id </span><span class="pun">=</span><span class="pln"> article</span><span class="pun">.</span><span class="pln">user_id</span></pre>
+
+        <p>You can join same table two times. Second table have to have another alias:</p>
+
+        <pre class="prettyprint"><span class="pln">   $query </span><span class="pun">=</span><span class="pln"> $fpdo</span><span class="pun">-&gt;</span><span class="kwd">from</span><span class="pun">(</span><span class="str">'article'</span><span class="pun">)</span><span class="pln">
+              </span><span class="pun">-&gt;</span><span class="kwd">select</span><span class="pun">(</span><span class="str">'comment:user.name AS comment_user_name'</span><span class="pun">)</span><span class="pln">
+              </span><span class="pun">-&gt;</span><span class="pln">leftJoin</span><span class="pun">(</span><span class="str">'user AS article_author'</span><span class="pun">)</span><span class="pln">
+                  </span><span class="pun">-&gt;</span><span class="kwd">select</span><span class="pun">(</span><span class="str">'article_author.name AS article_author_name'</span><span class="pun">);</span></pre>
+        <pre class="prettyprint"><span class="pln">  SELECT article</span><span class="pun">.*,</span><span class="pln"> user</span><span class="pun">.</span><span class="pln">name AS comment_user_name</span><span class="pun">,</span><span class="pln"> article_author</span><span class="pun">.</span><span class="pln">name AS article_author_name 
+  FROM article 
+      LEFT JOIN comment ON comment</span><span class="pun">.</span><span class="pln">article_id </span><span class="pun">=</span><span class="pln"> article</span><span class="pun">.</span><span class="pln">id  
+      LEFT JOIN user ON user</span><span class="pun">.</span><span class="pln">id </span><span class="pun">=</span><span class="pln"> comment</span><span class="pun">.</span><span class="pln">user_id 
+      LEFT JOIN user AS article_author ON article_author</span><span class="pun">.</span><span class="pln">id </span><span class="pun">=</span><span class="pln"> article</span><span class="pun">.</span><span class="pln">user_id</span></pre>
+
+
+        <h3>Multi reference</h3>
+
+        <p>As you can see in previous example references via more then one table are also possible and you can combine dots and colons:</p>
+
+        <pre class="prettyprint"><span class="pln">  $query </span><span class="pun">=</span><span class="pln"> $fpdo</span><span class="pun">-&gt;</span><span class="kwd">from</span><span class="pun">(</span><span class="str">'article'</span><span class="pun">)-&gt;</span><span class="kwd">where</span><span class="pun">(</span><span class="str">'comment:user.country.name'</span><span class="pun">,</span><span class="pln"> $country</span><span class="pun">);</span></pre>
+
+        <pre class="prettyprint"><span class="pln">  SELECT article</span><span class="pun">.*</span><span class="pln"> 
+  FROM article 
+      LEFT JOIN comment ON comment</span><span class="pun">.</span><span class="pln">article_id </span><span class="pun">=</span><span class="pln"> article</span><span class="pun">.</span><span class="pln">id  
+      LEFT JOIN user ON user</span><span class="pun">.</span><span class="pln">id </span><span class="pun">=</span><span class="pln"> comment</span><span class="pun">.</span><span class="pln">user_id  
+      LEFT JOIN country ON country</span><span class="pun">.</span><span class="pln">id </span><span class="pun">=</span><span class="pln"> user</span><span class="pun">.</span><span class="pln">country_id 
+  WHERE country</span><span class="pun">.</span><span class="pln">name </span><span class="pun">=</span><span class="pln"> </span><span class="pun">?</span></pre>
+        <p><em>For more examples see subdirectory tests/</em></p>
+
+      </section>
+
+      <section id="select">
+        <div class="page-header">
+          <h2>SELECT * FROM</h2>
+        </div>
+
+        <p>Every SELECT query begins with <code>$fpdo-&gt;from($table)</code> followed by as many clauses as you want.</p>
+
+        <table class="table table-bordered">
+          <tbody><tr>
+            <th>syntax</th>
+            <th>description</th>
+          </tr>
+          <tr>
+            <td><code>from($table)</code></td>
+            <td>set <em>$table</em> in <strong>FROM</strong> clause</td>
+          </tr>
+          <tr>
+            <td><code>from($table, $id)</code></td>
+            <td>shortcut for <code>from($table)-&gt;where('id = ?', $id)</code></td>
+          </tr>
+          <tr>
+            <td><code>select($columns[, ...])</code></td>
+            <td>appends <strong>SELECT</strong> clause with <em>$column</em> or any expresion (e.g. <code>CURDATE() AS today)</code></td>
+          </tr>
+          <tr>
+            <td>
+              <code>leftJoin($joinedTable)</code><br>
+              <code>innerJoin($joinedTable)</code>
+            </td>
+            <td>
+              appends <strong>LEFT JOIN</strong> or <strong>INNER JOIN</strong> clause,<br><em>$joinedTable</em> could be "tableName" only or full join statement <br><em>("tableName:" colon means back reference, see <a href="http://fluentpdo.com/documentation.html#smartJoinBuilder">Smart join builder</a>)</em>
+            </td>
+          </tr>
+          <tr>
+            <td><code>where($condition[, $parameters])</code></td>
+            <td>explained later</td>
+          </tr>
+          <tr>
+            <td><code>groupBy($columns[, ...])</code></td>
+            <td>appends <strong>GROUP BY</strong> clause</td>
+          </tr>
+          <tr>
+            <td><code>having($columns[, ...])</code></td>
+            <td>appends <strong>HAVING</strong> clause</td>
+          </tr>
+          <tr>
+            <td><code>orderBy($columns[, ...])</code></td>
+            <td>appends <strong>ORDER BY</strong> clause</td>
+          </tr>
+          <tr>
+            <td><code>limit($limit)</code></td>
+            <td>sets <strong>LIMIT</strong> clause</td>
+          </tr>
+          <tr>
+            <td><code>offset($offset)</code></td>
+            <td>sets <strong>OFFSET</strong> clause</td>
+          </tr>
+          <tr>
+            <td><code>fetch($column = '')</code></td>
+            <td>fetch first row or column only from first row</td>
+          </tr>
+          <tr>
+            <td><code>fetchPairs($key, $value)</code></td>
+            <td>fetch pairs</td>
+          </tr>
+          <tr>
+            <td><code>fetchAll($index = '', $selectOnly = '')</code></td>
+            <td>fetch all rows. You can specify for fetched array index-column and which columns will be fetched.</td>
+          </tr>
+        </tbody></table>
+
+        <p>You can add clauses <code>select(), where(), groupBy(), having(), orderBy()</code>
+          as many times as you want. Everything will be appended into query. Clauses <code>from(), limit(), offset()</code> rewrite previous setting.</p>
+
+        <p><em>If you want to reset a clause (i.e. remove previous defined statements), call any clause with <code>null</code>. E.g.:</em></p>
+
+        <pre class="prettyprint"><span class="pln">$query </span><span class="pun">=</span><span class="pln"> $query</span><span class="pun">-&gt;</span><span class="kwd">where</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">);</span><span class="pln">   </span><span class="com">// remove all prev defined where() clauses</span><span class="pln">
+$query </span><span class="pun">=</span><span class="pln"> $query</span><span class="pun">-&gt;</span><span class="pln">orderBy</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">);</span><span class="pln"> </span><span class="com">// remove all prev defined orderBy() clauses</span><span class="pln">
+$query </span><span class="pun">=</span><span class="pln"> $query</span><span class="pun">-&gt;</span><span class="kwd">select</span><span class="pun">(</span><span class="kwd">null</span><span class="pun">)-&gt;</span><span class="kwd">select</span><span class="pun">(</span><span class="str">'id'</span><span class="pun">);</span><span class="pln"> </span><span class="com"># set "SELECT id FROM ...."</span></pre>
+
+
+        <h3>Debugging</h3>
+
+        <p>You can debug queries, parameters, executed time and row count. For debugging set property debug:</p>
+
+        <pre class="prettyprint"><span class="pln">$fpdo</span><span class="pun">-&gt;</span><span class="pln">debug </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">true</span><span class="pln">        </span><span class="com">// log queries to STDERR (for console debugging)</span><span class="pln">
+$fpdo</span><span class="pun">-&gt;</span><span class="pln">debug </span><span class="pun">=</span><span class="pln"> $callback   </span><span class="com">// or set $callback($FluentQuery)  </span><span class="pln">
+                           </span><span class="com">// @see tests/26-debug.phpt for expample usage</span></pre>
+
+      </section>
+
+      <section id="where">
+        <div class="page-header">
+          <h2>WHERE</h2>
+        </div>
+
+        <p>Repetitive calls of <code>where()</code> are connected with <code>AND</code>. The <code>where()</code> <em>$condition</em> can contain ? or :name which is <a href="http://www.php.net/manual/en/pdostatement.execute.php">bound by PDO</a> (so no manual escaping is required). If the question mark and colon are missing in <code>where()</code> $condition then the behavior is:</p>
+
+        <table class="table table-bordered">
+          <tbody><tr>
+            <th>syntax</th>
+            <th>description</th>
+          </tr>
+          <tr>
+            <td><code>$table-&gt;where("field", "x")</code></td>
+            <td>Translated to <code>field = 'x'</code></td>
+          </tr>
+          <tr>
+            <td><code>$table-&gt;where("field", null)</code></td>
+            <td>Translated to <code>field IS NULL</code></td>
+          </tr>
+          <tr>
+            <td><code>$table-&gt;where(null)</code></td>
+            <td>beware, <code>where(null)</code> reset clause and remove all prev defined conditions</td>
+          </tr>
+          <tr>
+            <td><code>$table-&gt;where("field", array("x", "y"))</code></td>
+            <td>Translated to <code>field IN ('x', 'y')</code></td>
+          </tr>
+          <tr>
+            <td><code>$table-&gt;where("field &gt; ?", "x")</code></td>
+            <td>bound by PDO</td>
+          </tr>
+          <tr>
+            <td><code>$table-&gt;where("field &gt; :name", array(':name' =&gt; 'x'))</code></td>
+            <td>bound by PDO</td>
+          </tr>
+          <tr>
+            <td><code>$table-&gt;where(array("field1" =&gt; "value1", ...))</code> </td>
+            <td>Translated to <code>field1 = 'value1' AND ...</code></td>
+          </tr>
+        </tbody></table>
+
+        <p>Every value is automatically escaped.</p>
+      </section>
+
+      <hr>
+
+      <footer>
+        <p>© 2012, <a href="http://licht.sk/">Marek Lichtner</a>, <a href="mailto:%6Da%72ek@licht%2Esk">marek@licht.sk</a></p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./FluentPDO_files/jquery.js"></script>    
+    <script src="./FluentPDO_files/bootstrap.js"></script>
+    <script src="./FluentPDO_files/prettify.js"></script>
+    <script src="./FluentPDO_files/application.js"></script>
+  
+
+<div id="feedly-mini" title="feedly Mini tookit"></div></body></html>
