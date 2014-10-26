@@ -39,18 +39,19 @@ $klein->respond('/', function(){
  * http://symfony.com/doc/current/components/routing/introduction.html (dynamische controller)
  */
 $klein->respond('/[:controller]/[:method]?/[:action]?/[:value]?', function ($request) {
-    if (class_exists(ucfirst($request->controller))) {
-        $controllerName = $request->controller;
-        $controller = new $controllerName();
+    $class = '\\Krikke\\Skeleton\\Controller\\' . ucfirst($request->controller);
+    if (class_exists(ucfirst($class))) {
+        $controller = new $class();
         if (isset($request->method) && !empty($request->method) && method_exists($controller, $request->method)) {
             $method = $request->method;
             return $controller->$method($request->action, $request->value);
         } else {
-            return $controller->index($request->action, $request->value);
+            return $controller->index();
         }
     } else {
         //404
     }
 });
+
 
 $klein->dispatch();
