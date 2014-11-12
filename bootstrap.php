@@ -38,7 +38,7 @@ $klein->respond('/', function(){
  *
  * http://symfony.com/doc/current/components/routing/introduction.html (dynamische controller)
  */
-$klein->respond('/[:controller]/[:method]?/[:action]?/[:value]?', function ($request) {
+$klein->respond('/[:controller]/[:method]?/[:action]?/[:value]?/?', function ($request) {
     $class = '\\Krikke\\Skeleton\\Controller\\' . ucfirst($request->controller);
     if (class_exists(ucfirst($class))) {
         $controller = new $class();
