@@ -58,17 +58,15 @@ Dialog.TestDialog = Backbone.View.extend({
             contentType:"application/json; charset=utf-8",
             dataType:"json",
             data: JSON.stringify(this.model)
-        })
-            .done(function(data) {
-                if(!data.success) {
-                    alert(data.message);
-                } else {
-                    location.reload();
-                }
-            })
-            .fail(function(data) {
+        }).done(function(data) {
+            if(!data.success) {
                 alert(data.message);
-            });
+            } else {
+                location.reload();
+            }
+        }).fail(function(data) {
+            alert(data.message);
+        });
     },
 
     getIssue: function(issueId) {
@@ -79,13 +77,11 @@ Dialog.TestDialog = Backbone.View.extend({
                 contentType:"application/json; charset=utf-8",
                 dataType:"json",
                 data: JSON.stringify({id: issueId})
-            })
-            .done(function(data) {
+            }).done(function(data) {
                 if(data.success) {
                     console.log(data.data);
                 }
-            })
-            .fail(function(data) {
+            }).fail(function(data) {
                 console.dir(data);
             });
     }

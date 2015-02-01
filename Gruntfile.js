@@ -30,6 +30,8 @@ module.exports = function(grunt) {
                     '<%=folders.components%>/bootstrap/js/bootstrap-tooltip.js',
                     '<%=folders.components%>/bootstrap/js/bootstrap-transition.js',
                     '<%=folders.components%>/bootstrap/js/bootstrap-typeahead.js',
+                    '<%=folders.components %>/twig.js/twig.js',
+                    '<%=folders.components %>/backbone.stickit/backbone.stickit.js',
                     '<%=folders.components%>/fancybox/source/jquery.fancybox.js',
                     '<%=folders.components%>/jquery.easy-pie-chart/dist/jquery.easypiechart.js',
                     '<%=folders.res%>/js/sources/*.js'
@@ -118,6 +120,19 @@ module.exports = function(grunt) {
                 files: '<%= folders.res %>/fonts/**',
                 tasks: ['copy:fonts']
             }
+        },
+        twig: {
+            options: {
+                template_key: function(path) {return path.split("/").pop().replace(".twig", ""); },
+                amd_wrapper: false,
+                each_template: 'ProjectSkeleton.Utils.Template.add("{{ filepath }}", {{ compiled }});'
+            },
+            base: {
+                src: [
+                    '<%= folders.res %>/twigjs/TestDialog.html.twig'
+                ],
+                dest: '<%= folders.target %>/js/templates.base.js'
+            }
         }
 
     });
@@ -129,11 +144,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-twig');
 
     // Default call = building all JS / CSS
     grunt.registerTask('default', 'build');
     grunt.registerTask('css', 'less');
-    grunt.registerTask('js', 'concat');
+    grunt.registerTask('js', ['twig', 'concat']);
 
     // Complete build
     grunt.registerTask('build', ['js', 'css', 'copy', 'watch']);
