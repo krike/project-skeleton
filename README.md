@@ -9,6 +9,23 @@ To get started run:
 
     phing install
 
-For generating the css & javascript on the fly run the following:
+For deployment to production server use:
+
+    phing deploy
+
+If you do not have phing installed go to http://www.phing.info/trac/wiki/Users/Installation
+
+or if you don't want to use phing you can use the following:
+
+    npm install
+    bower install
+    composer install
+    grunt
+
+For deployment use:
+
+    grunt deploy
+
+For generating the css & javascript on the fly you can run the following:
 
     grunt default watch
