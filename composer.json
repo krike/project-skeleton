@@ -2,7 +2,8 @@
     "require": {
         "twig/twig" : "1.*",
         "klein/klein": "dev-master",
-        "sunra/php-simple-html-dom-parser": "1.5.0"
+        "sunra/php-simple-html-dom-parser": "1.5.0",
+        "lichtner/fluentpdo": "dev-master"
     },
     "autoload": {
         "psr-4": {

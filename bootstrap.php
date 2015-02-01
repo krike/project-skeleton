@@ -6,7 +6,6 @@ define('BASE_DIR', dirname(__FILE__));
 define('BASE_URL', 'http://' . $_SERVER['HTTP_HOST'] . str_replace('/index.php', '', $_SERVER['PHP_SELF']));
 
 include_once 'vendor/autoload.php';
-include "lib/FluentPDO/FluentPDO.php";
 
 if(ENVIRONMENT != 'production') {
    /**

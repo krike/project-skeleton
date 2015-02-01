@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
     ],
-    "hash": "c458fc2cb710aea6a73a5d7f30cbf38b",
+    "hash": "8ed0e9ad7648dbcbfb95985bb1a34564",
     "packages": [
         {
             "name": "klein/klein",
@@ -11,20 +12,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/chriso/klein.php.git",
-                "reference": "3ca0ba7f2836601469e4153c4ea227081e5a670f"
+                "reference": "eb80e09d222aa1a6ca2a0ea48b386433d8c4d169"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chriso/klein.php/zipball/3ca0ba7f2836601469e4153c4ea227081e5a670f",
-                "reference": "3ca0ba7f2836601469e4153c4ea227081e5a670f",
+                "url": "https://api.github.com/repos/chriso/klein.php/zipball/eb80e09d222aa1a6ca2a0ea48b386433d8c4d169",
+                "reference": "eb80e09d222aa1a6ca2a0ea48b386433d8c4d169",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "phpunit/php-code-coverage": "1.2.x",
-                "phpunit/phpunit": "3.7.x",
+                "phpunit/php-code-coverage": "2.x",
+                "phpunit/phpunit": "4.1.x",
                 "squizlabs/php_codesniffer": "1.4.8"
             },
             "type": "library",
@@ -59,7 +60,47 @@
                 "routing",
                 "sinatra"
             ],
-            "time": "2014-10-15 15:30:58"
+            "time": "2014-12-16 01:08:24"
+        },
+        {
+            "name": "lichtner/fluentpdo",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lichtner/fluentpdo.git",
+                "reference": "fa2721faf75fc54c29553798886c1bf7c6d07444"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lichtner/fluentpdo/zipball/fa2721faf75fc54c29553798886c1bf7c6d07444",
+                "reference": "fa2721faf75fc54c29553798886c1bf7c6d07444",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "FluentPDO/FluentPDO.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0",
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Marek Lichtner",
+                    "homepage": "http://licht.sk/"
+                }
+            ],
+            "description": "FluentPDO is small PHP library for rapid query building. Killer feature is smart join builder which generates joins automatically.",
+            "homepage": "http://fluentpdo.com/",
+            "keywords": [
+                "database",
+                "dbal",
+                "pdo"
+            ],
+            "time": "2015-01-26 12:23:08"
         },
         {
             "name": "sunra/php-simple-html-dom-parser",
@@ -106,16 +147,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.16.1",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/fabpot/Twig.git",
-                "reference": "7c4c01dcf578523cfcddf383641a4f12790270ec"
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "4cf7464348e7f9893a93f7096a90b73722be99cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/7c4c01dcf578523cfcddf383641a4f12790270ec",
-                "reference": "7c4c01dcf578523cfcddf383641a4f12790270ec",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/4cf7464348e7f9893a93f7096a90b73722be99cf",
+                "reference": "4cf7464348e7f9893a93f7096a90b73722be99cf",
                 "shasum": ""
             },
             "require": {
@@ -124,7 +165,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.16-dev"
+                    "dev-master": "1.18-dev"
                 }
             },
             "autoload": {
@@ -150,7 +191,7 @@
                 },
                 {
                     "name": "Twig Team",
-                    "homepage": "https://github.com/fabpot/Twig/graphs/contributors",
+                    "homepage": "http://twig.sensiolabs.org/contributors",
                     "role": "Contributors"
                 }
             ],
@@ -159,15 +200,17 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2014-10-10 14:09:53"
+            "time": "2015-01-25 17:32:08"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "klein/klein": 20
+        "klein/klein": 20,
+        "lichtner/fluentpdo": 20
     },
+    "prefer-stable": false,
     "platform": [],
     "platform-dev": []
 }
