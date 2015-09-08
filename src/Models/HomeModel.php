@@ -17,7 +17,9 @@ class HomeModel extends AbstractModel {
         return $this->getRecordById($this->tableName, $id);
     }
     
-    public function getIssuesFromActiveProject($id) {
-        
+    public function delete($id)
+    {
+        return $this->deleteRecord($this->tableName, 'id', $id);
     }
+
 }
