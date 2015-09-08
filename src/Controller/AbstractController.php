@@ -27,4 +27,10 @@ abstract class AbstractController {
 		exit;
 	}
     
+    public function extractJsonFromPost()
+    {
+        $input_data = trim(file_get_contents('php://input'));
+        return (array) json_decode($input_data);
+    }
+    
 }
