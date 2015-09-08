@@ -12,7 +12,10 @@
         "fontawesome": "~4.1.0",
         "bootstrap": "~3.2.0",
         "jquery.easy-pie-chart": "~2.1.4",
+        "underscore": "~1.6.0",
+        "backbone": "~1.1.2",
         "twig.js": "~0.7.2",
-        "backbone.stickit": "~0.8.0"
+        "backbone.stickit": "~0.8.0",
+    "jquery-ui": "~1.11.2"
     }
 }
