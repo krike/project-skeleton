@@ -2,7 +2,7 @@
 
 namespace Krikke\Skeleton\Models;
 
-class ExampleModel extends AbstractModel {
+class HomeModel extends AbstractModel {
     
     public $tableName = 'projects';
     
