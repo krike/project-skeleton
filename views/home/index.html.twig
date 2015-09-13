@@ -2,7 +2,15 @@
 {% block content %}
     <div class="row">
         <div class="col-sm-12">
-            Place content here
+            <p>Place content here.</p>
+			<p>
+				<a href="#" class="btn btn-primary openTestDialog">Test dialog</a>
+			</p>
         </div>
     </div>
+{% endblock %}
+{% block footer_script %}
+$(function(){
+	ProjectSkeleton.Controllers.Home.init();
+});
 {% endblock %}
