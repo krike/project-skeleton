@@ -31,10 +31,16 @@ module.exports = function(grunt) {
                     '<%=folders.components%>/bootstrap/js/bootstrap-transition.js',
                     '<%=folders.components%>/bootstrap/js/bootstrap-typeahead.js',
                     '<%=folders.components %>/twig.js/twig.js',
+                    '<%=folders.components %>/underscore/underscore.js',
+                    '<%=folders.components %>/backbone/backbone.js',
                     '<%=folders.components %>/backbone.stickit/backbone.stickit.js',
                     '<%=folders.components%>/fancybox/source/jquery.fancybox.js',
                     '<%=folders.components%>/jquery.easy-pie-chart/dist/jquery.easypiechart.js',
-                    '<%=folders.res%>/js/sources/*.js'
+                    '<%=folders.res%>/js/Util/*.js',
+                    '<%=folders.res%>/js/Model/*.js',
+                    '<%=folders.res%>/js/View/*.js',
+                    '<%=folders.res%>/js/Dialogs/*.js',
+                    '<%=folders.res%>/js/Controller/*.js'
                 ],
                 dest: '<%=folders.target%>/js/app.js'
             }
@@ -109,7 +115,7 @@ module.exports = function(grunt) {
                 tasks: ['css']
             },
             js: {
-                files: ['<%=folders.dest%>/js/sources/*.js'],
+                files: ['<%=folders.dest%>/js/**/*.js'],
                 tasks: ['uglify']
             },
             images: {
