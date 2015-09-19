@@ -13,29 +13,27 @@ module.exports = function(grunt) {
            /* jquery: {
                 src: ['<%=folders.components%>/jquery/jquery.js'],
                 dest: '<%=folders.dest%>/js/jquery.js'
-            },*/
+           },*/
             app: {
                 src: [
-                    '<%=folders.components%>/auto-suggest/jquery.autoSuggest.js',
-                    '<%=folders.components%>/bootstrap/js/bootstrap-affix.js',
-                    '<%=folders.components%>/bootstrap/js/bootstrap-alert.js',
-                    '<%=folders.components%>/bootstrap/js/bootstrap-button.js',
-                    '<%=folders.components%>/bootstrap/js/bootstrap-carousel.js',
-                    '<%=folders.components%>/bootstrap/js/bootstrap-collapse.js',
-                    '<%=folders.components%>/bootstrap/js/bootstrap-dropdown.js',
-                    '<%=folders.components%>/bootstrap/js/bootstrap-modal.js',
+                    //'<%=folders.components%>/auto-suggest/jquery.autoSuggest.js',
+                    //'<%=folders.components%>/bootstrap/js/bootstrap-affix.js',
+                    //'<%=folders.components%>/bootstrap/js/bootstrap-alert.js',
+                    //'<%=folders.components%>/bootstrap/js/bootstrap-button.js',
+                    //'<%=folders.components%>/bootstrap/js/bootstrap-carousel.js',
+                    //'<%=folders.components%>/bootstrap/js/bootstrap-collapse.js',
+                    //'<%=folders.components%>/bootstrap/js/bootstrap-dropdown.js',
+                    //'<%=folders.components%>/bootstrap/js/bootstrap-modal.js',
                     //'<%=folders.components%>/bootstrap/js/bootstrap-popover.js',
-                    '<%=folders.components%>/bootstrap/js/bootstrap-scrollspy.js',
-                    '<%=folders.components%>/bootstrap/js/bootstrap-tab.js',
-                    '<%=folders.components%>/bootstrap/js/bootstrap-tooltip.js',
-                    '<%=folders.components%>/bootstrap/js/bootstrap-transition.js',
-                    '<%=folders.components%>/bootstrap/js/bootstrap-typeahead.js',
+                    //'<%=folders.components%>/bootstrap/js/bootstrap-scrollspy.js',
+                    //'<%=folders.components%>/bootstrap/js/bootstrap-tab.js',
+                    //'<%=folders.components%>/bootstrap/js/bootstrap-tooltip.js',
+                    //'<%=folders.components%>/bootstrap/js/bootstrap-transition.js',
+                    //'<%=folders.components%>/bootstrap/js/bootstrap-typeahead.js',
                     '<%=folders.components %>/twig.js/twig.js',
                     '<%=folders.components %>/underscore/underscore.js',
                     '<%=folders.components %>/backbone/backbone.js',
                     '<%=folders.components %>/backbone.stickit/backbone.stickit.js',
-                    '<%=folders.components%>/fancybox/source/jquery.fancybox.js',
-                    '<%=folders.components%>/jquery.easy-pie-chart/dist/jquery.easypiechart.js',
                     '<%=folders.res%>/js/Util/*.js',
                     '<%=folders.res%>/js/Model/*.js',
                     '<%=folders.res%>/js/View/*.js',
@@ -158,6 +156,6 @@ module.exports = function(grunt) {
     grunt.registerTask('js', ['twig', 'concat']);
 
     // Complete build
-    grunt.registerTask('build', ['js', 'css', 'copy', 'watch']);
+    grunt.registerTask('build', ['js', 'css', 'copy']);
     grunt.registerTask('deploy', ['js', 'uglify', 'css', 'img', 'compress']);
 };
