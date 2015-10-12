@@ -10,26 +10,23 @@ module.exports = function(grunt) {
         },
 
         concat: {
-           /* jquery: {
-                src: ['<%=folders.components%>/jquery/jquery.js'],
-                dest: '<%=folders.dest%>/js/jquery.js'
-           },*/
             app: {
                 src: [
+                    '<%=folders.components%>/jquery/jquery.js',
                     //'<%=folders.components%>/auto-suggest/jquery.autoSuggest.js',
-                    //'<%=folders.components%>/bootstrap/js/bootstrap-affix.js',
-                    //'<%=folders.components%>/bootstrap/js/bootstrap-alert.js',
-                    //'<%=folders.components%>/bootstrap/js/bootstrap-button.js',
-                    //'<%=folders.components%>/bootstrap/js/bootstrap-carousel.js',
-                    //'<%=folders.components%>/bootstrap/js/bootstrap-collapse.js',
-                    //'<%=folders.components%>/bootstrap/js/bootstrap-dropdown.js',
-                    //'<%=folders.components%>/bootstrap/js/bootstrap-modal.js',
-                    //'<%=folders.components%>/bootstrap/js/bootstrap-popover.js',
-                    //'<%=folders.components%>/bootstrap/js/bootstrap-scrollspy.js',
-                    //'<%=folders.components%>/bootstrap/js/bootstrap-tab.js',
-                    //'<%=folders.components%>/bootstrap/js/bootstrap-tooltip.js',
-                    //'<%=folders.components%>/bootstrap/js/bootstrap-transition.js',
-                    //'<%=folders.components%>/bootstrap/js/bootstrap-typeahead.js',
+                    //'<%=folders.components%>/bootstrap/js/affix.js',
+                    //'<%=folders.components%>/bootstrap/js/alert.js',
+                    //'<%=folders.components%>/bootstrap/js/button.js',
+                    //'<%=folders.components%>/bootstrap/js/carousel.js',
+                    //'<%=folders.components%>/bootstrap/js/collapse.js',
+                    //'<%=folders.components%>/bootstrap/js/dropdown.js',
+                    //'<%=folders.components%>/bootstrap/js/modal.js',
+                    //'<%=folders.components%>/bootstrap/js/popover.js',
+                    //'<%=folders.components%>/bootstrap/js/scrollspy.js',
+                    //'<%=folders.components%>/bootstrap/js/tab.js',
+                    //'<%=folders.components%>/bootstrap/js/tooltip.js',
+                    //'<%=folders.components%>/bootstrap/js/transition.js',
+                    //'<%=folders.components%>/bootstrap/js/typeahead.js',
                     '<%=folders.components %>/twig.js/twig.js',
                     '<%=folders.components %>/underscore/underscore.js',
                     '<%=folders.components %>/backbone/backbone.js',
@@ -50,7 +47,7 @@ module.exports = function(grunt) {
             jquery: {
                 files:
                 {
-                    '<%=folders.res%>/js/jquery.js': ['<%=folders.target%>/js/jquery.js']
+                    '<%=folders.res%>/js/app.js': ['<%=folders.target%>/js/app.js']
                 }
             }
         },
@@ -64,7 +61,6 @@ module.exports = function(grunt) {
                 files: {
                     "<%=folders.target%>/css/screen.css.gz": "<%=folders.target%>/css/screen.css",
                     "<%=folders.target%>/css/print.css.gz": "<%=folders.target%>/css/print.css",
-                    "<%=folders.target%>/js/jquery.js.gz": "<%=folders.target%>/js/jquery.js",
                     "<%=folders.target%>/js/app.js.gz": "<%=folders.target%>/js/app.js"
                 }
             }
