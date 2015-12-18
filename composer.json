@@ -3,7 +3,8 @@
         "twig/twig" : "1.*",
         "klein/klein": "dev-master",
         "sunra/php-simple-html-dom-parser": "1.5.0",
-        "lichtner/fluentpdo": "dev-master"
+        "lichtner/fluentpdo": "dev-master",
+        "krike/wp-elements": "^1.0"
     },
     "autoload": {
         "psr-4": {

@@ -48,7 +48,7 @@ abstract class AbstractModel {
         }
     }
 
-    protected function get($table, $fields = '*', $order = 'id ASC', $limit = null)
+    protected function get($table, $fields = '*', $order = 'id ASC', $limit = null, $offset = null)
     {
         $this->getDbConnection();
         $query = $this->db->from($table)
@@ -56,6 +56,10 @@ abstract class AbstractModel {
 
         if (is_numeric($limit) && $limit > 0) {
             $query->limit($limit);
+        }
+        
+        if (is_numeric($offset) && $offset > 0) {
+            $query->offset($offset);
         }
 
         $results = $query->fetchAll();

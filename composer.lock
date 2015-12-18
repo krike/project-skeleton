@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8ed0e9ad7648dbcbfb95985bb1a34564",
+    "hash": "00b934aacb29837a16a8d4d09487702f",
     "packages": [
         {
             "name": "klein/klein",
@@ -63,6 +63,37 @@
             "time": "2014-12-16 01:08:24"
         },
         {
+            "name": "krike/wp-elements",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/krike/WPelements.git",
+                "reference": "7bdf3febb8c831bf4782d03053c7eb7e3ed350dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/krike/WPelements/zipball/7bdf3febb8c831bf4782d03053c7eb7e3ed350dd",
+                "reference": "7bdf3febb8c831bf4782d03053c7eb7e3ed350dd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL"
+            ],
+            "authors": [
+                {
+                    "name": "Christophe Debruel",
+                    "email": "krike06@gmail.com"
+                }
+            ],
+            "description": "An easy to use Library Class to speed the process of writting wordpress plugin and the structure layout of your plugin",
+            "time": "2015-10-05 08:11:19"
+        },
+        {
             "name": "lichtner/fluentpdo",
             "version": "dev-master",
             "source": {
@@ -72,7 +103,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lichtner/fluentpdo/zipball/fa2721faf75fc54c29553798886c1bf7c6d07444",
+                "url": "https://api.github.com/repos/lichtner/fluentpdo/zipball/0092fc16dbef345a61ce2c448f98f75c99886b30",
                 "reference": "fa2721faf75fc54c29553798886c1bf7c6d07444",
                 "shasum": ""
             },
@@ -211,6 +242,7 @@
         "lichtner/fluentpdo": 20
     },
     "prefer-stable": false,
+    "prefer-lowest": false,
     "platform": [],
     "platform-dev": []
 }
